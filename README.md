@@ -13,7 +13,7 @@ For API documentation, visit [Kontenbase API Reference](https://docs.kontenbase.
 ## Installation
 
 ```bash
-go get github.com/kontenbase/kontenbase-go
+go get -u github.com/kontenbase/kontenbase-go
 ```
 
 ## Usage
@@ -160,6 +160,37 @@ if err != nil {
 defer file.Close()
 
 resp, err := client.Storage.Upload(file)
+```
+
+## Realtime
+
+### Subscribe
+```go
+func onMessage (event string, payload map[string]interface{}) error {
+  fmt.Println(event)
+	return nil
+}
+
+func onError (event string, payload map[string]interface{}) error {
+  fmt.Println(payload)
+	return nil
+}
+
+func main() {
+  key, err := client.Realtime.Subscribe("Movies", options.SubscribeOptions{
+    Event:     options.RealtimeAll,
+    OnMessage: onMessage,
+    OnError:   onError,
+  })
+}
+```
+
+### Unsubscribe
+```go
+err := client.Realtime.Unsubsribe(key)
+if err != nil {
+  return err
+}
 ```
 
 ## Feedback
