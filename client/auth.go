@@ -89,7 +89,7 @@ type RegisterParams struct {
 }
 
 func (a *AuthClient) Register(body RegisterParams) (*AuthResponse, *KontenbaseError) {
-	resp, err := a.httpClient.Post("/logout", body, nil)
+	resp, err := a.httpClient.Post("/register", body, nil)
 	if err != nil {
 		return nil, err
 	}
