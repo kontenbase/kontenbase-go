@@ -20,7 +20,7 @@ func DefaultURL() string {
 
 func NewClient(apiKey string, url string) *Client {
 
-	if url != "" {
+	if url == "" {
 		url = DefaultURL()
 	}
 
