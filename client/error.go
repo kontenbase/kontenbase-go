@@ -6,9 +6,9 @@ import (
 )
 
 type KontenbaseError struct {
-	Message    string
-	Status     int
-	StatusText string
+	Message    string `json:"message"`
+	Status     int    `json:"status"`
+	StatusText string `json:"statusText"`
 }
 
 func (err *KontenbaseError) Error() string {

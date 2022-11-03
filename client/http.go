@@ -15,10 +15,10 @@ type HTTPClient struct {
 }
 
 type HTTPResponse struct {
-	StatusCode int
-	StatusText string
-	Data       interface{}
-	Header     http.Header
+	StatusCode int         `json:"statusCode"`
+	StatusText string      `json:"statusText"`
+	Data       interface{} `json:"data"`
+	Header     http.Header `json:"header"`
 }
 
 func NewHTTPClient(baseUrl string, headers map[string]string) *HTTPClient {
